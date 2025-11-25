@@ -1,0 +1,1 @@
+NiBdy is a community archiving system that bridges the gap between archiving and users by letting everyone become an archivist. This way, every story is preserved without institutional gatekeeping, specifically serving marginalised communities.
