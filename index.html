@@ -295,7 +295,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 NiBdy Archive. Preserving marginalised voices.</p>
+      <p>&copy; 2024 NiBdy Archive. Preserving marginalized voices.</p>
       <p style="margin-top: 0.5rem;">This site is powered by <a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a></p>
     </div>
   </footer>
@@ -508,6 +508,11 @@
       content.innerHTML = '';
 
       try {
+        // Check if storage is available
+        if (!window.storage) {
+          throw new Error('Storage not available');
+        }
+
         const result = await window.storage.list('material:', true);
         
         if (!result || !result.keys || result.keys.length === 0) {
@@ -525,7 +530,8 @@
               materials.push(JSON.parse(data.value));
             }
           } catch (error) {
-            console.error('Error loading material:', error);
+            // Skip materials that can't be loaded
+            console.warn('Skipping material:', key, error);
           }
         }
 
@@ -536,7 +542,14 @@
         displayMaterials(materials);
       } catch (error) {
         console.error('Error loading materials:', error);
-        content.innerHTML = '<div class="empty-state"><h3>Error loading materials</h3><p>Please refresh the page</p></div>';
+        // If it's just an empty storage, show empty state instead of error
+        if (error.message && error.message.includes('not found')) {
+          allMaterials = [];
+          displayMaterials([]);
+        } else {
+          allMaterials = [];
+          displayMaterials([]);
+        }
       } finally {
         loading.style.display = 'none';
       }
