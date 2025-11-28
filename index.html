@@ -324,8 +324,8 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 NiBdy Archive. Preserving marginalised voices.</p>
       <p style="margin-top: 0.5rem;">
+        <a href="#" onclick="showAbout(event)" style="margin-right: 1rem;">About</a>
         <a href="#" onclick="showCodeOfConduct(event)" style="margin-right: 1rem;">Code of Conduct</a>
         This site is powered by <a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a>
       </p>
@@ -458,6 +458,35 @@ Team leaders have the right and responsibility to remove, edit, or reject upload
     
     <button onclick="closeCodeOfConduct()" style="width: 100%; padding: 1rem; background: #667eea; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;">Close</button>
   </div>
+  <!-- About Modal -->
+  <div id="about-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; padding: 20px; overflow-y: auto;">
+    <div style="background: white; padding: 2.5rem; border-radius: 15px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; margin: 2rem auto;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.5rem; margin-bottom: 0.5rem;">About NiBdy</h2>
+        <p style="font-size: 1.1rem; color: #667eea; font-style: italic;">Archiving our way</p>
+      </div>
+      
+      <div style="line-height: 1.8; color: #333; font-size: 1.05rem;">
+        <p style="margin-bottom: 1.5rem;">Across traditional archives, marginalized communities face erasure and are often excluded. This leads to a loss of stories and contributes to the active underrepresentation of these communities across society.</p>
+        
+        <p style="margin-bottom: 1.5rem;"><strong>NiBdy</strong>—a play on "anybody" and "everybody"—seeks to address this through our community archive by creating a home for every marginalized history, where every story deserves to be documented and preserved for future generations.</p>
+        
+        <p style="margin-bottom: 1.5rem;">Here, <em>you</em> become an archivist and protect your communities from institutionalized gatekeeping and erasure. From research to visual and performance art, literature, and audio, we invite you to add and preserve materials dear to you.</p>
+        
+        <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea; margin: 2rem 0;">
+          <p style="margin: 0; font-weight: 500;">At the moment, we're testing and listening to every piece of feedback you have about NiBdy. We hope to fully launch additional features in the coming months—including our research hub and multidisciplinary exchange serving as home to important work across the art and cultural ecosystem in Nigeria and beyond.</p>
+        </div>
+        
+        <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem;">Thank you, and welcome to NiBdy.</p>
+        
+        <p style="text-align: center; margin-top: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; font-size: 1.1rem;">With love,<br>The NiBdy Team 💜</p>
+      </div>
+      
+      <button onclick="closeAbout()" style="width: 100%; margin-top: 2rem; padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">Close</button>
+    </div>
+  </div>
+
+</body>
 </div>
 </body>
 </html>
