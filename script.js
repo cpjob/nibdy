@@ -383,7 +383,7 @@ function showHome() {
 }
 
 function performSearch() {
-  const query = document.getElementById('search-input').value.trim().toLowerCase();
+  const query = document.getElementById('search-input').value.trim();
   
   if (!query) {
     currentFilter = null;
@@ -392,16 +392,34 @@ function performSearch() {
   }
 
   const results = allMaterials.filter(m => 
-    m.title.toLowerCase().includes(query) ||
-    m.author.toLowerCase().includes(query) ||
-    m.subsection.toLowerCase().includes(query) ||
-    m.description.toLowerCase().includes(query)
+    m.title.toLowerCase().includes(query.toLowerCase()) ||
+    m.author.toLowerCase().includes(query.toLowerCase()) ||
+    m.subsection.toLowerCase().includes(query.toLowerCase()) ||
+    m.description.toLowerCase().includes(query.toLowerCase())
   );
 
-  currentFilter = 'search'; // Set a special filter for search
+  // Don't set currentFilter for search
+  currentFilter = null;
+  
+  // Manually set the header before displaying
   const header = document.getElementById('section-header');
   header.innerHTML = `<h2>Search Results: "${escapeHtml(query)}"</h2>`;
-  displayMaterials(results);
+  
+  // Display results without changing the header
+  const content = document.getElementById('content');
+  
+  if (results.length === 0) {
+    content.innerHTML = `
+      <div class="empty-state">
+        <h3>This doesn't exist yet.</h3>
+        <p>Be the first to preserve some!</p>
+        <button onclick="toggleUpload()">Add Material</button>
+      </div>
+    `;
+    return;
+  }
+
+  content.innerHTML = results.map(m => createCard(m)).join('');
 }
 
 function escapeHtml(text) {
