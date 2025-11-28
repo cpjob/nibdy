@@ -127,36 +127,51 @@ async function handleUpload(event) {
         progressContainer.style.display = 'none';
       },
       async () => {
-        const downloadURL = await window.firebaseRefs.getDownloadURL(uploadTask.snapshot.ref);
-        
-        let subsectionValue = document.getElementById('subsection').value;
-        if (subsectionValue === 'Other') {
-          subsectionValue = document.getElementById('other-subsection').value.trim();
-        }
-        
-        const materialData = {
-          title: document.getElementById('title').value.trim(),
-          author: document.getElementById('author').value.trim(),
-          description: document.getElementById('description').value.trim(),
-          section: document.getElementById('section').value,
-          subsection: subsectionValue,
-          type: file.type,
-          fileUrl: downloadURL,
-          fileName: file.name,
-          dateArchived: new Date().toISOString(),
-          flagCount: 0,
-          flaggedBy: []
-        };
+        try {
+          const downloadURL = await window.firebaseRefs.getDownloadURL(uploadTask.snapshot.ref);
+          
+          let subsectionValue = document.getElementById('subsection').value;
+          if (subsectionValue === 'Other') {
+            subsectionValue = document.getElementById('other-subsection').value.trim();
+          }
+          
+          const materialData = {
+            title: document.getElementById('title').value.trim(),
+            author: document.getElementById('author').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            section: document.getElementById('section').value,
+            subsection: subsectionValue,
+            type: file.type,
+            fileUrl: downloadURL,
+            fileName: file.name,
+            dateArchived: new Date().toISOString(),
+            flagCount: 0,
+            flaggedBy: []
+          };
 
-        await window.firebaseRefs.addDoc(window.firebaseRefs.collection(window.firebaseDb, 'materials'), materialData);
-        
-        alert('Material archived successfully!');
-        toggleUpload();
-        form.reset();
-        progressContainer.style.display = 'none';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit';
-        await loadMaterials();
+          await window.firebaseRefs.addDoc(window.firebaseRefs.collection(window.firebaseDb, 'materials'), materialData);
+          
+          // Reset UI first
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit';
+          progressBar.style.width = '0%';
+          progressBar.textContent = '0%';
+          progressContainer.style.display = 'none';
+          
+          // Show success and close modal
+          alert('Material archived successfully!');
+          form.reset();
+          toggleUpload();
+          
+          // Reload materials to show the new upload
+          await loadMaterials();
+        } catch (error) {
+          console.error('Error saving to database:', error);
+          alert('File uploaded but failed to save details. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit';
+          progressContainer.style.display = 'none';
+        }
       }
     );
   } catch (error) {
