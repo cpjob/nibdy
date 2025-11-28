@@ -440,8 +440,7 @@ function showAbout(event) {
   event.preventDefault();
   const modal = document.getElementById('about-modal');
   if (modal) {
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'flex-start';
+    modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; padding: 20px; overflow-y: auto; align-items: flex-start; justify-content: center;';
   }
 }
 
