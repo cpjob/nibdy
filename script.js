@@ -435,3 +435,19 @@ function closeCodeOfConduct() {
     modal.style.display = 'none';
   }
 }
+
+function showAbout(event) {
+  event.preventDefault();
+  const modal = document.getElementById('about-modal');
+  if (modal) {
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'flex-start';
+  }
+}
+
+function closeAbout() {
+  const modal = document.getElementById('about-modal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
