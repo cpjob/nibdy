@@ -386,6 +386,7 @@ function performSearch() {
   const query = document.getElementById('search-input').value.trim().toLowerCase();
   
   if (!query) {
+    currentFilter = null;
     displayMaterials(allMaterials);
     return;
   }
@@ -397,8 +398,9 @@ function performSearch() {
     m.description.toLowerCase().includes(query)
   );
 
-  currentFilter = null;
-  document.getElementById('section-header').innerHTML = `<h2>Search Results: "${escapeHtml(query)}"</h2>`;
+  currentFilter = 'search'; // Set a special filter for search
+  const header = document.getElementById('section-header');
+  header.innerHTML = `<h2>Search Results: "${escapeHtml(query)}"</h2>`;
   displayMaterials(results);
 }
 
