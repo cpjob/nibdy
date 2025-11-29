@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NiBdy Archive</title>
-  <style>
+<style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,7 +27,7 @@
     font-size: 2rem; 
     text-align: center; 
     margin-bottom: 1.5rem;
-    color: #f4a261;
+    color: #ffffff;
     font-weight: 600;
   }
   
@@ -52,8 +52,8 @@
   nav a:hover { 
     background: #3a3a3a; 
     transform: translateY(-2px);
-    border-color: #f4a261;
-    color: #f4a261;
+    border-color: #ffffff;
+    color: #ffffff;
   }
   
   .search-container {
@@ -72,8 +72,11 @@
     background: #2a2a2a;
     color: #e0e0e0;
   }
+  #search-input::placeholder {
+    color: #888;
+  }
   #search-input:focus {
-    border-color: #f4a261;
+    border-color: #ffffff;
   }
   #search-btn, #upload-btn {
     padding: 0.8rem 1.5rem;
@@ -87,17 +90,17 @@
     border: 1px solid #3a3a3a;
   }
   #upload-btn { 
-    background: #f4a261; 
+    background: #ffffff; 
     color: #0a0a0a;
-    border-color: #f4a261;
+    border-color: #ffffff;
   }
   #search-btn:hover { 
     background: #3a3a3a;
-    border-color: #f4a261;
+    border-color: #ffffff;
   }
   #upload-btn:hover { 
     transform: scale(1.05);
-    background: #e5935a;
+    background: #e0e0e0;
   }
   
   #upload-modal {
@@ -126,14 +129,26 @@
   }
   .modal-content h2 { 
     margin-bottom: 1.5rem; 
-    color: #f4a261;
+    color: #ffffff;
+  }
+  .modal-content h3 {
+    color: #ffffff;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .modal-content p,
+  .modal-content li {
+    color: #e0e0e0;
+  }
+  .modal-content strong {
+    color: #ffffff;
   }
   .form-group { margin-bottom: 1.5rem; }
   .form-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: #e0e0e0;
+    color: #ffffff;
   }
   .form-group input[type="text"],
   .form-group input[type="number"],
@@ -146,18 +161,23 @@
     font-size: 1rem;
     font-family: inherit;
     background: #2a2a2a;
-    color: #e0e0e0;
+    color: #ffffff;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #888;
   }
   .form-group input:focus,
   .form-group textarea:focus,
   .form-group select:focus {
     outline: none;
-    border-color: #f4a261;
+    border-color: #ffffff;
   }
   .form-group textarea { min-height: 100px; resize: vertical; }
   .form-group input[type="file"] { 
     padding: 0.5rem;
     cursor: pointer;
+    color: #e0e0e0;
   }
   .form-group small {
     color: #999;
@@ -178,7 +198,7 @@
     transition: all 0.3s;
   }
   .btn-primary { 
-    background: #f4a261; 
+    background: #ffffff; 
     color: #0a0a0a;
   }
   .btn-secondary { 
@@ -193,7 +213,7 @@
   .section-header {
     text-align: center;
     margin-bottom: 2rem;
-    color: #f4a261;
+    color: #ffffff;
   }
   
   .grid {
@@ -216,8 +236,8 @@
   }
   .card:hover { 
     transform: translateY(-5px); 
-    box-shadow: 0 4px 15px rgba(244,162,97,0.2);
-    border-color: #f4a261;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    border-color: #ffffff;
   }
   .card-media {
     width: 100%;
@@ -227,7 +247,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f4a261;
+    color: #ffffff;
     font-size: 3rem;
   }
   .card-media img,
@@ -237,7 +257,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #f4a261;
+    color: #ffffff;
   }
   .card-author {
     font-size: 0.9rem;
@@ -267,7 +287,7 @@
     gap: 0.5rem;
   }
   .card-tag {
-    background: #f4a261;
+    background: #ffffff;
     color: #0a0a0a;
     padding: 0.3rem 0.8rem;
     border-radius: 15px;
@@ -289,7 +309,7 @@
   }
   .flagged {
     background: #3a2a1a;
-    border-color: #f4a261;
+    border-color: #ffaa00;
   }
   
   .empty-state {
@@ -300,12 +320,15 @@
   .empty-state h3 { 
     font-size: 1.5rem; 
     margin-bottom: 1rem;
-    color: #e0e0e0;
+    color: #ffffff;
+  }
+  .empty-state p {
+    color: #bbb;
   }
   .empty-state button {
     margin-top: 1rem;
     padding: 1rem 2rem;
-    background: #f4a261;
+    background: #ffffff;
     color: #0a0a0a;
     border: none;
     border-radius: 25px;
@@ -319,7 +342,7 @@
   .loading {
     text-align: center;
     padding: 2rem;
-    color: #f4a261;
+    color: #ffffff;
     font-size: 1.2rem;
   }
   
@@ -332,13 +355,13 @@
     border-top: 1px solid #333;
   }
   footer a { 
-    color: #f4a261; 
+    color: #ffffff; 
     text-decoration: none;
     transition: color 0.3s;
   }
   footer a:hover { 
     text-decoration: underline;
-    color: #e5935a;
+    color: #e0e0e0;
   }
   
   .progress-container {
@@ -351,7 +374,7 @@
   }
   .progress-bar {
     height: 30px;
-    background: #f4a261;
+    background: #ffffff;
     border-radius: 10px;
     text-align: center;
     line-height: 30px;
@@ -433,6 +456,12 @@
         <div class="form-group">
           <label for="description">Description *</label>
           <textarea id="description" name="description" required placeholder="Helps for accessibility purposes too."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="keywords">Keywords/Tags</label>
+          <input type="text" id="keywords" name="keywords" placeholder="e.g., protest, poetry, Lagos, 2020 (separate with commas)">
+          <small style="color: #888;">Add keywords to help others find this material. Separate multiple keywords with commas.</small>
         </div>
         
         <div class="form-group">
@@ -556,12 +585,12 @@ Team leaders have the right and responsibility to remove, edit, or reject upload
       <div style="line-height: 1.8; color: #333; font-size: 1.05rem;">
         <p style="margin-bottom: 1.5rem;">Across traditional archives, marginalised communities face erasure and are often excluded. This leads to a loss of stories and contributes to the active underrepresentation of these communities across society.</p>
         
-        <p style="margin-bottom: 1.5rem;"><strong>NiBdy</strong>—a play on anybody and everybody—seeks to address this through our community archive by creating a space for every marginalised history, where every story deserves to be documented and preserved for future generations.</p>
+        <p style="margin-bottom: 1.5rem;"><strong>NiBdy</strong>—a play on anybody and everybody—seeks to address this through our community archive by creating a home for every marginalised history, where every story deserves to be documented and preserved for future generations. The communities we aim to serve are broad and far-reaching, including but not limited to women, LGBTQIA+ people, persons with disabilities, ethnicities, religions, socioeconomic status, and more.</p>
         
         <p style="margin-bottom: 1.5rem;">Here, <em>you</em> become an archivist and protect your communities from institutionalised gatekeeping and erasure. From research to visual and performance art, literature, and audio, we invite you to add and preserve materials dear to you.</p>
         
         <div style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea; margin: 2rem 0;">
-          <p style="margin: 0; font-weight: 500;">At the moment, we're testing and listening to every piece of feedback you have about NiBdy. We hope to fully launch additional features in the coming months-including our research hub and multidisciplinary exchange serving as home to important work across the art and cultural ecosystem in Nigeria and beyond.</p>
+          <p style="margin: 0; font-weight: 500;">At the moment, we're testing and listening to every piece of feedback you have about NiBdy. We hope to fully launch additional features in the coming months-including our research hub and multidisciplinary exchange addressing the historical gaps and contemporary needs of artists, researchers, collectors, across the art and cultural ecosystem in Nigeria and beyond.</p>
         </div>
         
         <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem;">Thank you, and welcome to NiBdy.</p>
