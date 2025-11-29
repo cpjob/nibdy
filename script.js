@@ -276,7 +276,9 @@ function createCard(material) {
           <span class="card-tag">${escapeHtml(material.subsection)}</span>
           <span>${date}</span>
         </div>
+        <div style="display: flex; gap: 0.3rem;">
         <button class="flag-btn" onclick="flagMaterial(event, '${material.id}')" title="Report inappropriate content">🚩 Report</button>
+        <button class="flag-btn" onclick="reportCopyright(event, '${material.id}')" title="Report copyright violation" style="color: #ff6b6b;">©️</button>
       </div>
     </div>
   `;
@@ -468,5 +470,61 @@ function closeAbout() {
   const modal = document.getElementById('about-modal');
   if (modal) {
     modal.style.display = 'none';
+  }
+}
+
+function showTerms(event) {
+  event.preventDefault();
+  const modal = document.getElementById('terms-modal');
+  if (modal) {
+    modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; padding: 20px; overflow-y: auto; align-items: flex-start; justify-content: center;';
+  }
+}
+
+function closeTerms() {
+  const modal = document.getElementById('terms-modal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+async function reportCopyright(event, id) {
+  event.stopPropagation();
+  
+  const details = prompt('Please describe the copyright violation:\n\n(e.g., "This is my copyrighted photograph used without permission" or "This belongs to [Company Name]")');
+  
+  if (!details || details.trim() === '') {
+    return;
+  }
+  
+  const contact = prompt('Please provide your contact information (email or phone) so we can follow up:');
+  
+  if (!contact || contact.trim() === '') {
+    alert('Contact information is required for copyright reports.');
+    return;
+  }
+  
+  try {
+    const material = allMaterials.find(m => m.id === id);
+    if (!material) return;
+    
+    const copyrightReport = {
+      type: 'copyright',
+      materialId: id,
+      materialTitle: material.title,
+      materialAuthor: material.author,
+      materialUrl: material.fileUrl,
+      details: details.trim(),
+      reporterContact: contact.trim(),
+      timestamp: new Date().toISOString(),
+      status: 'pending'
+    };
+    
+    await window.firebaseRefs.addDoc(window.firebaseRefs.collection(window.firebaseDb, 'copyright-reports'), copyrightReport);
+    
+    alert('Thank you for your copyright report. We will review this material within 48 hours and contact you at the information provided.');
+  } catch (error) {
+    console.error('Error reporting copyright violation:', error);
+    alert('Failed to submit report. Please try again or email us directly.');
   }
 }
