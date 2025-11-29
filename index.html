@@ -328,6 +328,7 @@
       <p style="margin-top: 0.5rem;">
         <a href="#" onclick="showAbout(event)" style="margin-right: 1rem;">About</a>
         <a href="#" onclick="showCodeOfConduct(event)" style="margin-right: 1rem;">Code of Conduct</a>
+        <a href="#" onclick="showTerms(event)" style="margin-right: 1rem;">Terms of Service</a>
         This site is powered by <a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a>
       </p>
     </div>
@@ -380,6 +381,13 @@
         <div class="form-group" id="other-field" style="display: none;">
           <label for="other-subsection">Please specify *</label>
           <input type="text" id="other-subsection" name="other-subsection" placeholder="What type of work is this?">
+        </div>
+        
+        <div class="form-group" style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; border: 2px solid #ffc107;">
+          <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer; margin: 0;">
+            <input type="checkbox" id="copyright-agreement" required style="margin-top: 0.2rem; width: auto; cursor: pointer;">
+            <span style="font-size: 0.95rem; line-height: 1.6;">I confirm that I own this work or have explicit permission to share it, and I grant NiBdy a non-exclusive, worldwide licence to display, store, and preserve this material for archival purposes. I understand that I am responsible for any copyright violations. *</span>
+          </label>
         </div>
         
         <div class="form-group" style="background: #f9f9f9; padding: 1.5rem; border-radius: 8px; border: 2px solid #ddd;">
@@ -488,6 +496,71 @@ Team leaders have the right and responsibility to remove, edit, or reject upload
       <button onclick="closeAbout()" style="width: 100%; margin-top: 2rem; padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">Close</button>
     </div>
   </div>
+  <!-- Terms of Service Modal -->
+<div id="terms-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; padding: 20px; overflow-y: auto;">
+  <div style="background: white; padding: 2.5rem; border-radius: 15px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; margin: 2rem auto;">
+    <h2 style="margin-bottom: 1.5rem; color: #333;">Terms of Service</h2>
+    
+    <div style="line-height: 1.8; color: #333; font-size: 1rem;">
+      <p style="margin-bottom: 1rem;"><strong>Last Updated:</strong> November 2025</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">1. Acceptance of Terms</h3>
+      <p style="margin-bottom: 1rem;">By accessing and using NiBdy ("the Archive"), you agree to be bound by these Terms of Service. If you do not agree, please do not use the Archive.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">2. Purpose</h3>
+      <p style="margin-bottom: 1rem;">NiBdy is a community archive dedicated to preserving the stories, art, and cultural materials of marginalised communities. Our mission is to combat erasure through collective preservation.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">3. User Responsibilities</h3>
+      <p style="margin-bottom: 0.5rem;">When you upload content, you represent and warrant that:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>You own the content or have explicit permission from the copyright holder to share it</li>
+        <li>The content does not infringe on any third party's intellectual property rights</li>
+        <li>The content does not violate any laws or regulations</li>
+        <li>The content does not contain hate speech, harassment, or discriminatory material</li>
+        <li>You are solely responsible for any legal consequences arising from your uploads</li>
+      </ul>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">4. Licence Grant</h3>
+      <p style="margin-bottom: 1rem;">By uploading content, you grant NiBdy a non-exclusive, worldwide, royalty-free, perpetual licence to display, store, reproduce, and preserve your content for archival purposes. You retain all ownership rights to your work.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">5. Copyright Policy</h3>
+      <p style="margin-bottom: 1rem;">NiBdy respects intellectual property rights. We will respond promptly to valid copyright infringement notices. If you believe your copyrighted work has been uploaded without permission, please contact us immediately at <strong>[nibdy.lib@gmail.com]</strong> with:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Identification of the copyrighted work</li>
+        <li>Location of the infringing material (URL)</li>
+        <li>Your contact information</li>
+        <li>A statement of good faith belief that use is unauthorised</li>
+        <li>A statement that the information is accurate and you are authorised to act</li>
+      </ul>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">6. Content Removal</h3>
+      <p style="margin-bottom: 1rem;">We reserve the right to remove any material that:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Violates these Terms of Service</li>
+        <li>Infringes on intellectual property rights</li>
+        <li>Is flagged by the community and deemed inappropriate</li>
+        <li>Violates our Code of Conduct</li>
+      </ul>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">7. Disclaimer of Warranties</h3>
+      <p style="margin-bottom: 1rem;">The Archive is provided "as is" without warranties of any kind. We do not guarantee uninterrupted access, accuracy of content, or fitness for any particular purpose.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">8. Limitation of Liability</h3>
+      <p style="margin-bottom: 1rem;">NiBdy and its operators shall not be liable for any damages arising from use of the Archive, including but not limited to copyright claims, data loss, or unauthorised access.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">9. Governing Law</h3>
+      <p style="margin-bottom: 1rem;">These Terms shall be governed by the laws of Nigeria.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">10. Changes to Terms</h3>
+      <p style="margin-bottom: 1rem;">We reserve the right to modify these Terms at any time. Continued use of the Archive after changes constitutes acceptance of the modified Terms.</p>
+      
+      <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">11. Contact</h3>
+      <p style="margin-bottom: 1rem;">For questions or copyright concerns, contact: <strong>[nibdy.lib@gmail.com]</strong></p>
+    </div>
+    
+    <button onclick="closeTerms()" style="width: 100%; margin-top: 2rem; padding: 1rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s;">Close</button>
+  </div>
+</div>
   
 </body>
 </html>
