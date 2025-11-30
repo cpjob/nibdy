@@ -365,7 +365,17 @@ function viewMaterial(id) {
   modal.id = 'view-modal';
   modal.style.cssText = 'display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px;';
   modal.innerHTML = `
-    <div style="background: white; padding: 2rem; border-radius: 15px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto;">
+    <div style="background: #1a1a1a; padding: 2rem; border-radius: 15px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; border: 1px solid #3a3a3a;">
+      <h2 style="margin-bottom: 1rem; color: #ffffff;">${escapeHtml(material.title)}</h2>
+      <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Author:</strong> ${escapeHtml(material.author)}</p>
+      <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Section:</strong> ${escapeHtml(material.section)} - ${escapeHtml(material.subsection)}</p>
+      ${material.keywordsString ? `<p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Keywords:</strong> ${escapeHtml(material.keywordsString)}</p>` : ''}
+      <p style="color: #e0e0e0; margin-bottom: 1rem;"><strong style="color: #ffffff;">Archived:</strong> ${new Date(material.dateArchived).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      <p style="margin-bottom: 1.5rem; line-height: 1.6; color: #e0e0e0;">${escapeHtml(material.description)}</p>
+      ${viewContent}
+      <button onclick="document.getElementById('view-modal').remove()" style="width: 100%; margin-top: 1.5rem; padding: 1rem; background: #ffffff; color: #0a0a0a; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;">Close</button>
+    </div>
+  `;
       <h2 style="margin-bottom: 1rem;">${escapeHtml(material.title)}</h2>
       <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Author:</strong> ${escapeHtml(material.author)}</p>
       <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Section:</strong> ${escapeHtml(material.section)} - ${escapeHtml(material.subsection)}</p>
