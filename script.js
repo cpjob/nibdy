@@ -376,16 +376,6 @@ function viewMaterial(id) {
       <button onclick="document.getElementById('view-modal').remove()" style="width: 100%; margin-top: 1.5rem; padding: 1rem; background: #ffffff; color: #0a0a0a; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;">Close</button>
     </div>
   `;
-      <h2 style="margin-bottom: 1rem;">${escapeHtml(material.title)}</h2>
-      <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Author:</strong> ${escapeHtml(material.author)}</p>
-      <p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Section:</strong> ${escapeHtml(material.section)} - ${escapeHtml(material.subsection)}</p>
-      ${material.keywordsString ? `<p style="color: #e0e0e0; margin-bottom: 0.5rem;"><strong style="color: #ffffff;">Keywords:</strong> ${escapeHtml(material.keywordsString)}</p>` : ''}
-      <p style="color: #e0e0e0; margin-bottom: 1rem;"><strong style="color: #ffffff;">Archived:</strong> ${new Date(material.dateArchived).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-      <p style="margin-bottom: 1.5rem; line-height: 1.6; color: #e0e0e0;">${escapeHtml(material.description)}</p>
-      ${viewContent}
-      <button onclick="document.getElementById('view-modal').remove()" style="width: 100%; margin-top: 1.5rem; padding: 1rem; background: #ccc; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer;">Close</button>
-    </div>
-  `;
   document.body.appendChild(modal);
 }
 
